@@ -1,35 +1,53 @@
 * {
+  -webkit-box-sizing: border-box;
   box-sizing: border-box;
+  font-size: 16px;
 }
 
 body {
   background-image: url("../img/circus-background.jpg");
+  background-repeat: no-repeat;
   background-size: cover;
-  background-position: center;
-  border: 3px solid pink;
-
-}
-
-body header {
+  background-position: center bottom;
+  padding-top: 6%;
   width: 1260px;
-  height: 276px;
-  border: 3px solid blue;
-  text-align: center;
-}
-
-header .header-image {
-
-  /*margin: auto 0;*/
-  width: 1152px;
-  height: 276px;
-  box-shadow: 0 0 20px 8px #ffe780 inset;
+  height: 643px;
+  border: 3px solid pink;
 }
 
 .container {
-  max-width: 1000px;
-  max-height: 630px;
-  margin: 6% 14%;
+  width: 100%;
+  height: 100%;
+  /*margin: 6% 14%;*/
   border: 3px solid green;
   display: flex;
   flex-direction: column;
+}
+
+.header {
+  border: 3px solid yellow;
+  height: 20%;
+}
+
+.main-box {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  height: 100%;
+  border: 3px solid white;
+}
+
+.main-box .left {
+  flex: 1;
+  border: 3px solid blue;
+}
+
+.main-box main {
+  flex: 3;
+  border: 3px solid black;
+}
+
+.main-box .right {
+  flex: 1;
+  border: 3px solid red;
 }
