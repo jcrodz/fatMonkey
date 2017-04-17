@@ -5,7 +5,7 @@
 }
 
 body {
-  background-image: url("../img/circus-background.jpg");
+  background-image: url("../img/circus-background-min.jpg");
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center bottom;
@@ -63,6 +63,7 @@ body {
   flex: 3;
   border: 3px solid black;
   cursor: crosshair;
+  background-image: -webkit-linear-gradient(bottom, #FFFFFF 0%, #02227F 30%, #1C1C52 100%);
 }
 
 .main-box .right {
@@ -74,35 +75,27 @@ body {
   display: none;
 }
 
-/*@-webkit-keyframes fadeInLeft {
-  from {
-    opacity: 0;
-    -webkit-transform: translate3d(-100%, 0, 0);
-    transform: translate3d(-100%, 0, 0);
-  }
-
-  to {
-    opacity: 1;
-    -webkit-transform: none;
-    transform: none;
-  }
+.back {
+  height: 10%;
 }
 
-@keyframes fadeInLeft {
-  from {
-    opacity: 0;
-    -webkit-transform: translate3d(-100%, 0, 0);
-    transform: translate3d(-100%, 0, 0);
-  }
-
-  to {
-    opacity: 1;
-    -webkit-transform: none;
-    transform: none;
-  }
+.moving-row {
+  display: flex;
+  height: 12%;
 }
 
-.fadeInLeft {
-  -webkit-animation-name: fadeInLeft;
-  animation-name: fadeInLeft;
-}*/
+.shooting-row {
+  background-color: white;
+  flex: 1;
+}
+
+.floor {
+  height: 9%;
+}
+
+.deck {
+  background-image: url("../img/woods.png");
+  background-repeat: repeat;
+  background-size: contain;
+  height: 20%;
+}
