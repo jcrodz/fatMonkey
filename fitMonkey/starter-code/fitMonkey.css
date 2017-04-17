@@ -69,6 +69,18 @@ body {
 .main-box .right {
   flex: 1;
   border: 3px solid red;
+  display: flex;
+  flex-direction: column;
+}
+
+.main-box #status-bar {
+  flex: 1;
+  border: 3px solid violet;
+}
+
+.main-box #monkey-image {
+  flex: 3;
+  border: 3px solid white;
 }
 
 .hide-me {
@@ -98,4 +110,45 @@ body {
   background-repeat: repeat;
   background-size: contain;
   height: 20%;
+}
+
+#status-bar {
+  border: 3px solid yellow;
+  /*margin: auto 0;*/
+  height: 90%;
+  padding-top: 15%;
+  text-align: center;
+  margin; auto 0;
+}
+
+#status-bar #status-bar-text {
+  font-size: 150%;
+  font-weight: bold;
+  padding-top: 6%;
+  height: 60%;
+  width: 80%;
+  margin: 0;
+  color: #0fb200;
+  background: #d5ffd1;
+  box-shadow: 10px 10px 29px -2px rgba(0,0,0,0.75);
+  border-radius: 10px;
+  border: 2px solid black;
+  /*height: 50px;*/
+  display: inline-block;
+  position: relative;
+  text-align: center;
+}
+
+#monkey-image {
+  padding: 5%;
+}
+
+#monkey {
+  width: 100%;
+  height: 100%;
+  display: inline-block;
+  margin: auto 0;
+  padding: 0% 20%;
+  background: linear-gradient(45deg, rgba(254,242,0,1) 0%, rgba(255,255,255,1) 100%);
+  border-radius: 20px;
 }
