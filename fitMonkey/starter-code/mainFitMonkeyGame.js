@@ -3,6 +3,7 @@ function Game() {
   this.shootingRows = ['first','second','third'];
   this.shootingColumns = 15;
   this.gameEnd = false;
+  this.monkey = new Monkey();
   this.items = [
     {name: 'banana', type: 'fruit', image: 'banana.gif'},
     {name: 'apple', type: 'fruit', image: 'apple.jpeg'},
@@ -16,12 +17,12 @@ function Game() {
   for(var rowIndex = 0; rowIndex < this.shootingRows.length; rowIndex++) {
     for(var columnIndex = 0; columnIndex < this.shootingColumns; columnIndex++) {
       var temp = this.shootingRows[rowIndex];
-      console.log(temp);
       $('.' + temp).append( $('<div>')
         .addClass('shooting-row')
-        .attr('row-num', rowIndex)
-        .attr('col-num', columnIndex)
-        .append($('<img>').addClass('shooting-row-img'))
+        .append($('<img>')
+        .addClass('shooting-row-img')
+        .attr('rownum', rowIndex)
+        .attr('colnum', columnIndex))
       );
   }
 
@@ -38,15 +39,48 @@ function Game() {
 }
 }
 
+Game.prototype.start = function () {
+  this.intervalID = setInterval(this.createRows.bind(this),1500);
+
+};
+
+Game.prototype.clearRows = function () {
+  var picChoose = $('.shooting-row-img');
+  var tempImage = '../img/whitex.png';
+  $(picChoose).attr('src',tempImage);
+};
+
+Game.prototype.createRows = function () {
+  if(this.gameEnd === false) {
+    this.addToRows();
+  }
+};
+
+Game.prototype.selectedImage = function () {
+  var game = this
+  $('.shooting-row-img').on('click', function() {
+    $(this).attr('src', '../img/whitex.png');
+    var tempType = $(this).attr('type');
+    game.monkey.changeFat(tempType);
+    // this.newMonkey.changeFat(this.name);
+    // var tempRow = this.rownum;
+    // var tempCol = this.colnum;
+    // $('img').hide();
+
+
+  });
+};
+
 Game.prototype.addToRows = function() {
   for (i = 0; i < $('.shooting-row-img').length; i += 2) {
     var randomNum = Math.floor(Math.random() * this.items.length);
     var picChoose = $('.shooting-row-img');
     var tempImage = '../img/' + this.items[randomNum].image;
+    var tempType = this.items[randomNum].name;
     $(picChoose[i]).attr('src',tempImage);
+    $(picChoose[i]).attr('type',tempType);
   }
 };
-
 // Game.prototype.makeRowMove = function () {
 //   while(this.gameEnd) {
 //     var randomNum = Math.floor(Math.random() * this.items.length);
@@ -66,8 +100,9 @@ Game.prototype.addToRows = function() {
 $(document).ready(function() {
 
   var newGame = new Game();
-  newGame.addToRows();
-  console.log($('.shooting-row'));
+  newGame.start();
+  newGame.selectedImage();
+  // newGame.clearRows();
 
   // newGame.makeRowMove();
   // console.log(newGame.shootingRow1);
