@@ -2,6 +2,7 @@ function Game() {
   this.shootingRow1 = [];
   this.shootingRows = ['first','second','third'];
   this.shootingColumns = 15;
+  this.timer = new Date().getTime();
   this.gameEnd = false;
   this.monkey = new Monkey();
   this.items = [
@@ -40,8 +41,13 @@ function Game() {
 }
 
 Game.prototype.start = function () {
+  var forTimer = this;
   this.intervalID = setInterval(this.createRows.bind(this),1500);
-
+  this.countDown = setInterval(function() {
+    var now = new Date().getTime();
+    var diff = now - forTimer.timer;
+    console.log(Math.round(diff/1000));
+},1000);
 };
 
 Game.prototype.clearRows = function () {
