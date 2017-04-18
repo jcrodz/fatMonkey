@@ -57,7 +57,7 @@ Game.prototype.createRows = function () {
 };
 
 Game.prototype.selectedImage = function () {
-  var game = this
+  var game = this;
   $('.shooting-row-img').on('click', function() {
     $(this).attr('src', '../img/whitex.png');
     var tempType = $(this).attr('type');
@@ -76,7 +76,7 @@ Game.prototype.addToRows = function() {
     var randomNum = Math.floor(Math.random() * this.items.length);
     var picChoose = $('.shooting-row-img');
     var tempImage = '../img/' + this.items[randomNum].image;
-    var tempType = this.items[randomNum].name;
+    var tempType = this.items[randomNum].type;
     $(picChoose[i]).attr('src',tempImage);
     $(picChoose[i]).attr('type',tempType);
   }
