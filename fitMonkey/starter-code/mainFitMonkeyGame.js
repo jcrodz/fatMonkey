@@ -82,6 +82,10 @@ Game.prototype.addToRows = function() {
     $(picChoose[i]).attr('src',tempImage);
     $(picChoose[i]).attr('type',tempType);
   }
+  for (j = 1; j < $('.shooting-row-img').length; j += 2) {
+    var picChoose2 = $('.shooting-row-img');
+    $(picChoose2[j]).attr('src', '../img/white.png');
+  }
 };
 
 
