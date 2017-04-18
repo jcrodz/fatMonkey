@@ -20,13 +20,14 @@ function Game() {
       $('.' + temp).append( $('<div>')
         .addClass('shooting-row')
         .attr('row-num', rowIndex)
-        .attr('col-num', columnIndex));
+        .attr('col-num', columnIndex)
+        .append($('<img>').addClass('shooting-row-img'))
+      );
   }
 
   $('.header-text').show(5000);
 
   var audioEl = document.getElementById("circus-sound");
-  audioEl.load();
   audioEl.play();
   audioEl.addEventListener("canplaythrough", function () {
           setTimeout(function(){
@@ -37,27 +38,26 @@ function Game() {
 }
 }
 
-Game.prototype.addToRow = function() {
-  for (i = 15; i >= 0; i -= 2) {
+Game.prototype.addToRows = function() {
+  for (i = 0; i < $('.shooting-row-img').length; i += 2) {
     var randomNum = Math.floor(Math.random() * this.items.length);
-    console.log(randomNum);
-    this.shootingRow1.push(this.items[randomNum].name);
-    this.shootingRow1.push('blank');
-    console.log(this.items[randomNum].name);
+    var picChoose = $('.shooting-row-img');
+    var tempImage = '../img/' + this.items[randomNum].image;
+    $(picChoose[i]).attr('src',tempImage);
   }
 };
 
-Game.prototype.makeRowMove = function () {
-  while(this.gameEnd) {
-    var randomNum = Math.floor(Math.random() * this.items.length);
-    this.shootingRow1.splice(1,0);
-    this.shootingRow1.push(this.items[randomNum].name);
-    this.shootingRow1.splice(1,0);
-    this.shootingRow1.push('blank');
-    console.log(this.shootingRow1);
+// Game.prototype.makeRowMove = function () {
+//   while(this.gameEnd) {
+//     var randomNum = Math.floor(Math.random() * this.items.length);
+//     this.shootingRow1.splice(1,0);
+//     this.shootingRow1.push(this.items[randomNum].name);
+//     this.shootingRow1.splice(1,0);
+//     this.shootingRow1.push('blank');
+//     console.log(this.shootingRow1);
 
-  }
-};
+  // }
+// };
 
 
 
@@ -66,7 +66,8 @@ Game.prototype.makeRowMove = function () {
 $(document).ready(function() {
 
   var newGame = new Game();
-  newGame.addToRow();
+  newGame.addToRows();
+  console.log($('.shooting-row'));
 
   // newGame.makeRowMove();
   // console.log(newGame.shootingRow1);
