@@ -21,6 +21,14 @@ console.log(tempType);
       console.log(newLeft);
       $('#monkey').css('padding-left', newLeft2);
       $('#monkey').css('padding-right', newRight2);
+      break;
+    // case 'timer':
+      var newLeft3 = leftPad + 4 + 'px';
+      var newRight3 = leftPad + 4 + 'px';
+      console.log(newLeft);
+      $('#monkey').css('padding-left', newLeft3);
+      $('#monkey').css('padding-right', newRight3);
+        break;
     default:
 
   }

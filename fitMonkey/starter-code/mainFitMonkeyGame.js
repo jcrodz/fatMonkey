@@ -40,21 +40,23 @@ function Game() {
 }
 }
 
-Game.prototype.start = function () {
-  var forTimer = this;
-  this.intervalID = setInterval(this.createRows.bind(this),1500);
-  this.countDown = setInterval(function() {
-    var now = new Date().getTime();
-    var diff = now - forTimer.timer;
-    console.log(Math.round(diff/1000));
+Game.prototype.countDown = function() {
+  var that = this;
+  setInterval(function() {
+  var now = new Date().getTime();
+  var diff = Math.round((now - that.timer)/1000);
+  var str = "Healthy Weight for:";
+  that.monkey.changeFat('timer');
+  $('.current-timer').html(str + diff + " seconds");
 },1000);
 };
 
-Game.prototype.clearRows = function () {
-  var picChoose = $('.shooting-row-img');
-  var tempImage = '../img/whitex.png';
-  $(picChoose).attr('src',tempImage);
+Game.prototype.start = function () {
+  this.intervalID = setInterval(this.createRows.bind(this),1500);
+  this.countDown();
+  this.selectedImage();
 };
+
 
 Game.prototype.createRows = function () {
   if(this.gameEnd === false) {
@@ -68,12 +70,6 @@ Game.prototype.selectedImage = function () {
     $(this).attr('src', '../img/whitex.png');
     var tempType = $(this).attr('type');
     game.monkey.changeFat(tempType);
-    // this.newMonkey.changeFat(this.name);
-    // var tempRow = this.rownum;
-    // var tempCol = this.colnum;
-    // $('img').hide();
-
-
   });
 };
 
@@ -87,30 +83,14 @@ Game.prototype.addToRows = function() {
     $(picChoose[i]).attr('type',tempType);
   }
 };
-// Game.prototype.makeRowMove = function () {
-//   while(this.gameEnd) {
-//     var randomNum = Math.floor(Math.random() * this.items.length);
-//     this.shootingRow1.splice(1,0);
-//     this.shootingRow1.push(this.items[randomNum].name);
-//     this.shootingRow1.splice(1,0);
-//     this.shootingRow1.push('blank');
-//     console.log(this.shootingRow1);
-
-  // }
-// };
-
-
-
 
 
 $(document).ready(function() {
 
   var newGame = new Game();
-  newGame.start();
-  newGame.selectedImage();
-  // newGame.clearRows();
-
-  // newGame.makeRowMove();
-  // console.log(newGame.shootingRow1);
-
+  $('button').on('click', function() {
+    console.log('perrrooooo');
+    clearInterval(newGame.countDown());
+    newGame.start();
+  });
 });

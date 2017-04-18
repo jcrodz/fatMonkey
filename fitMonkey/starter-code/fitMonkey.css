@@ -57,6 +57,23 @@ body {
 .main-box .left {
   flex: 1;
   border: 3px solid blue;
+  display: flex;
+  flex-direction: column;
+}
+
+.main-box .left .start {
+  flex: 1;
+  border: 3px solid pink;
+}
+
+.main-box .left .high-score {
+  flex: 1;
+  border: 3px solid violet;
+}
+
+.main-box .left .current-timer {
+  flex: 3;
+  border: 3px solid yellow;
 }
 
 .main-box main {
