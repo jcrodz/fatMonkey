@@ -29,14 +29,14 @@ function Game() {
 
   $('.header-text').show(5000);
 
-  var audioEl = document.getElementById("circus-sound");
-  audioEl.play();
-  audioEl.addEventListener("canplaythrough", function () {
-          setTimeout(function(){
-              audioEl.pause();
-          },
-          3500);
-  }, false);
+  // var audioEl = document.getElementById("circus-sound");
+  // audioEl.play();
+  // audioEl.addEventListener("canplaythrough", function () {
+  //         setTimeout(function(){
+  //             audioEl.pause();
+  //         },
+  //         35000);
+  // }, false);
 }
 }
 
