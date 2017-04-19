@@ -5,6 +5,7 @@ function Game() {
   this.timer = new Date().getTime();
   this.gameEnd = false;
   this.monkey = new Monkey();
+  this.secondsAlive = 0;
   this.items = [
     {name: 'banana', type: 'fruit', image: 'banana.gif'},
     {name: 'apple', type: 'fruit', image: 'apple.jpeg'},
@@ -42,16 +43,19 @@ function Game() {
 
 Game.prototype.countDown = function() {
   var that = this;
-  setInterval(function() {
+  this.intID = setInterval(function() {
   var now = new Date().getTime();
   var diff = Math.round((now - that.timer)/1000);
-  var str = "Healthy Weight for:";
+  var str = "Well fed for: ";
   that.monkey.changeFat('timer');
-  $('.current-timer').html(str + diff + " seconds");
+  that.secondsAlive = diff;
+  that.endGame(that.monkey.padding);
+  $('.current-timer-text').html(str + diff + " seconds");
 },1000);
 };
 
 Game.prototype.start = function () {
+  this.gameEnd = false;
   this.intervalID = setInterval(this.createRows.bind(this),1500);
   this.countDown();
   this.selectedImage();
@@ -64,12 +68,22 @@ Game.prototype.createRows = function () {
   }
 };
 
+Game.prototype.endGame = function (num) {
+  if(num === 0 || num >= 85) {
+    this.gameEnd = true;
+    alert("The monkey was well fed for: " + this.secondsAlive + " seconds. And your score is: " + this.monkey.score + ' points.');
+    clearInterval(this.intID);
+    return true;
+  }
+};
+
 Game.prototype.selectedImage = function () {
   var game = this;
   $('.shooting-row-img').on('click', function() {
     $(this).attr('src', '../img/whitex.png');
     var tempType = $(this).attr('type');
     game.monkey.changeFat(tempType);
+    game.endGame(game.monkey.padding);
   });
 };
 
@@ -89,12 +103,12 @@ Game.prototype.addToRows = function() {
 };
 
 
+
+
 $(document).ready(function() {
 
   var newGame = new Game();
   $('button').on('click', function() {
-    console.log('perrrooooo');
-    clearInterval(newGame.countDown());
     newGame.start();
   });
 });

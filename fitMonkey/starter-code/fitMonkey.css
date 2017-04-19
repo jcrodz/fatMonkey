@@ -81,14 +81,47 @@ body {
   box-shadow: 10px 10px 29px -2px rgba(0,0,0,0.75);
 }
 
-.main-box .left .high-score {
+.main-box .left .score {
   flex: 1;
   border: 3px solid violet;
+  background-image: url("../img/wood-nails.png");
+  background-repeat: no-repeat;
+  background-size: cover;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
+.main-box .left .score-text {
+  color: white;
+  font-size: 200%;
+  border: 2px solid green;
+  width: 85%;
+  height: 100%;
+  /*margin-top: 30%;*/
+  text-align: center;
+}
 .main-box .left .current-timer {
   flex: 3;
   border: 3px solid yellow;
+  background-image: url("../img/wood-sign2.png");
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: center bottom;
+  display: flex;
+  /*align-items: center;*/
+  justify-content: center;
+}
+
+.main-box .left .current-timer-text {
+  color: white;
+  font-size: 220%;
+  border: 2px solid green;
+  width: 85%;
+  height: 30%;
+  margin-top: 30%;
+  text-align: center;
+
 }
 
 .main-box main {
@@ -186,14 +219,13 @@ body {
   background-size: contain;
   background-repeat: no-repeat;
   background-position: center bottom;
-  align-i
 }
 
 #monkey {
   width: 100%;
   height: 100%;
-  padding-left: 0%;
-  padding-right: 0%;
+  padding-left: 20%;
+  padding-right: 20%;
   border-radius: 20px;
   order: 2px solid yellow;
 
