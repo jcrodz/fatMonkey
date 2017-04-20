@@ -1,4 +1,4 @@
-function Game() {
+function Game(object) {
   this.shootingRow1 = [];
   this.shootingRows = ['first','second','third'];
   this.shootingColumns = 15;
@@ -28,10 +28,12 @@ function Game() {
       );
   }
 
-  $('.header-text').show(5000);
 
-  // var audioEl = document.getElementById("circus-sound");
-  // audioEl.play();
+
+
+
+  this.audio = document.getElementById("circus-sound");
+  // $('#ding').load();
   // audioEl.addEventListener("canplaythrough", function () {
   //         setTimeout(function(){
   //             audioEl.pause();
@@ -41,39 +43,32 @@ function Game() {
 }
 }
 
-Game.prototype.countDown = function() {
-  var that = this;
-  this.intID = setInterval(function() {
-  var now = new Date().getTime();
-  var diff = Math.round((now - that.timer)/1000);
-  var str = "Well fed for: ";
-  that.monkey.changeFat('timer');
-  that.secondsAlive = diff;
-  that.endGame(that.monkey.padding);
-  $('.current-timer-text').html(str + diff + " seconds");
-},1000);
-};
-
-Game.prototype.start = function () {
-  this.gameEnd = false;
-  this.intervalID = setInterval(this.createRows.bind(this),1500);
-  this.countDown();
-  this.selectedImage();
-};
-
-
-Game.prototype.createRows = function () {
-  if(this.gameEnd === false) {
-    this.addToRows();
+Game.prototype.addToRows = function() {
+  if(this.gameEnd !== true) {
+    for (i = 0; i < $('.shooting-row-img').length; i += 2) {
+      var randomNum = Math.floor(Math.random() * this.items.length);
+      var picChoose = $('.shooting-row-img');
+      var tempImage = '../img/' + this.items[randomNum].image;
+      var tempType = this.items[randomNum].type;
+      $(picChoose[i]).attr('src',tempImage);
+      $(picChoose[i]).attr('type',tempType);
+    }
+    for (j = 1; j < $('.shooting-row-img').length; j += 2) {
+      var picChoose2 = $('.shooting-row-img');
+      $(picChoose2[j]).attr('src', '../img/white.png');
+    }
   }
 };
 
-Game.prototype.endGame = function (num) {
-  if(num === 0 || num >= 85) {
-    this.gameEnd = true;
-    alert("The monkey was well fed for: " + this.secondsAlive + " seconds. And your score is: " + this.monkey.score + ' points.');
-    clearInterval(this.intID);
-    return true;
+Game.prototype.countDown = function() {
+  if (this.gameEnd !== true) {
+    var now = new Date().getTime();
+    var diff = Math.round((now - this.timer)/1000);
+    var str = "Well fed for: ";
+    this.monkey.changeFat('timer');
+    this.secondsAlive = diff;
+    this.endGame(this.monkey.padding);
+    $('.current-timer-text').html(str + diff + " seconds");
   }
 };
 
@@ -87,28 +82,44 @@ Game.prototype.selectedImage = function () {
   });
 };
 
-Game.prototype.addToRows = function() {
-  for (i = 0; i < $('.shooting-row-img').length; i += 2) {
-    var randomNum = Math.floor(Math.random() * this.items.length);
-    var picChoose = $('.shooting-row-img');
-    var tempImage = '../img/' + this.items[randomNum].image;
-    var tempType = this.items[randomNum].type;
-    $(picChoose[i]).attr('src',tempImage);
-    $(picChoose[i]).attr('type',tempType);
-  }
-  for (j = 1; j < $('.shooting-row-img').length; j += 2) {
-    var picChoose2 = $('.shooting-row-img');
-    $(picChoose2[j]).attr('src', '../img/white.png');
+Game.prototype.reset = function () {
+  this.gameEnd = false;
+  this.monkey.score = 0;
+  this.timer = new Date().getTime();
+  var pad = 42.8 + 'px';
+  $('#monkey').css('padding-left', pad);
+  $('#monkey').css('padding-right', pad);
+  clearInterval(this.intervalCreate);
+  clearInterval(this.intervalCount);
+};
+
+Game.prototype.endGame = function (num) {
+  if(num === 0 || num >= 85) {
+    this.gameEnd = true;
+    this.audio.pause();
+    this.audio.load();
+    alert("The monkey was well fed for " + this.secondsAlive + " seconds. And your score is " + this.monkey.score + ' points.');
+    location.reload();
+    return true;
   }
 };
 
-
-
+Game.prototype.start = function () {
+  this.intervalCreate = setInterval(this.addToRows.bind(this),1500);
+  this.intervalCount = setInterval(this.countDown.bind(this),1000);
+  this.selectedImage();
+  this.audio.play();
+};
 
 $(document).ready(function() {
 
   var newGame = new Game();
   $('button').on('click', function() {
+    newGame.reset();
     newGame.start();
+
   });
+
 });
+
+alert('Keep the monkey at a healty weight. Dont let him starve or get obese. Last as most as you can and try to feed him mostly with fruits. Enjoy!')
