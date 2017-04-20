@@ -1,17 +1,59 @@
+<!DOCTYPE html>
 <html>
-
-<head>
-  <script src="bower_components/sweetalert/dist/sweetalert.min.js"></script>
-  <link rel="stylesheet" href="bower_components/sweetalert/dist/sweetalert.css">
-</head>
-
-
-<body>
-
-  <script>
-  sweetAlert("Hello world!");
-  </script>
-
-</body>
-
+  <head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" type="text/css" href="node_modules/sweetalert/dist/sweetalert.css">
+    <link type="text/css" rel="stylesheet" href="fitMonkey.css">
+    <link type="text/css" rel="stylesheet" href="animate.css">
+    <link href="https://fonts.googleapis.com/css?family=Gloria+Hallelujah" rel="stylesheet">
+    <title>Fit Monkey</title>
+  </head>
+  <body>
+    <div class="container">
+      <div class="header">
+        <div class="header-text"><strong></strong>Fat Monkey</div>
+      </div>
+      <div class="main-box">
+        <div class="left">
+          <div class='start'>
+            <button type="button" autofocus>Start Game</button>
+          </div>
+          <div class='score'>
+            <div class='score-text'></div>
+          </div>
+          <div class='current-timer'>
+            <div class='current-timer-text'></div>
+          </div>
+        </div>
+        <main>
+          <div class="back below-header"></div>
+          <div class="moving-row first"></div>
+          <div class="back below-moving-row"></div>
+          <div class="moving-row second"></div>
+          <div class="back below-moving-row"></div>
+          <div class="moving-row third"></div>
+          <div class="back below-moving-row"></div>
+          <div class="floor"></div>
+          <div class="deck"></div>
+        </main>
+        <div class="right">
+          <div id="status-bar">
+          </div>
+          <div id="monkey-image">
+            <img id="monkey" src="../img/monkeyFT.png" alt="monkey">
+          </div>
+        </div>
+      </div>
+      <div class="hide-me">
+        <audio id="circus-sound" controls loop>
+          <source src="../sounds/circus-sound.mp3" type="audio/mpeg">
+        </audio>
+      </div>
+    </div>
+  </body>
+  <script src="node_modules/sweetalert/dist/sweetalert.min.js"></script>
+  <script src="https://code.jquery.com/jquery-3.1.1.min.js"   integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="   crossorigin="anonymous"></script>
+  <script src='https://cdn.rawgit.com/admsev/jquery-play-sound/master/jquery.playSound.js'></script>
+  <script type="text/javascript" src="fitMonkey.js"></script>
+  <script type="text/javascript" src="mainFitMonkeyGame.js"></script>
 </html>
