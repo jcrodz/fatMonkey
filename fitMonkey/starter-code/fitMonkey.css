@@ -12,20 +12,20 @@ body {
   padding-top: 0%;
   width: 1260px;
   height: 643px;
-  border: 3px solid pink;
+  /*border: 3px solid pink;*/
 }
 
 .container {
   width: 100%;
   height: 100%;
   /*margin: 6% 14%;*/
-  border: 3px solid green;
+  /*border: 3px solid green;*/
   display: flex;
   flex-direction: column;
 }
 
 .header {
-  border: 3px solid yellow;
+  /*border: 3px solid yellow;*/
   /*margin: auto 0;*/
   height: 30%;
   text-align: center;
@@ -52,19 +52,19 @@ body {
   flex-direction: row;
   width: 100%;
   height: 100%;
-  border: 3px solid white;
+  /*border: 3px solid white;*/
 }
 
 .main-box .left {
   flex: 1;
-  border: 3px solid blue;
+  /*border: 3px solid blue;*/
   display: flex;
   flex-direction: column;
 }
 
 .main-box .left .start {
   flex: 1;
-  border: 3px solid pink;
+  /*border: 3px solid pink;*/
   width: 100%;
   height: 100%;
   display: flex;
@@ -83,7 +83,7 @@ body {
 
 .main-box .left .score {
   flex: 1;
-  border: 3px solid violet;
+  /*border: 3px solid violet;*/
   background-image: url("../img/wood-nails.png");
   background-repeat: no-repeat;
   background-size: cover;
@@ -95,7 +95,7 @@ body {
 .main-box .left .score-text {
   color: white;
   font-size: 200%;
-  border: 2px solid green;
+  /*border: 2px solid green;*/
   width: 85%;
   height: 100%;
   /*margin-top: 30%;*/
@@ -103,7 +103,7 @@ body {
 }
 .main-box .left .current-timer {
   flex: 3;
-  border: 3px solid yellow;
+  /*border: 3px solid yellow;*/
   background-image: url("../img/wood-sign2.png");
   background-repeat: no-repeat;
   background-size: contain;
@@ -116,7 +116,7 @@ body {
 .main-box .left .current-timer-text {
   color: white;
   font-size: 220%;
-  border: 2px solid green;
+  /*border: 2px solid green;*/
   width: 85%;
   height: 30%;
   margin-top: 30%;
@@ -133,19 +133,19 @@ body {
 
 .main-box .right {
   flex: 1;
-  border: 3px solid red;
+  /*border: 3px solid red;*/
   display: flex;
   flex-direction: column;
 }
 
 .main-box #status-bar {
   flex: 1;
-  border: 3px solid violet;
+  /*border: 3px solid violet;*/
 }
 
 .main-box #monkey-image {
-  flex: 3;
-  border: 3px solid white;
+  flex: 8;
+  /*border: 3px solid white;*/
 }
 
 .hide-me {
@@ -182,7 +182,7 @@ body {
 }
 
 #status-bar {
-  border: 3px solid yellow;
+  /*border: 3px solid yellow;*/
   /*margin: auto 0;*/
   height: 90%;
   padding-top: 15%;
@@ -202,7 +202,7 @@ body {
   background: #d5ffd1;
   box-shadow: 10px 10px 29px -2px rgba(0,0,0,0.75);
   border-radius: 10px;
-  border: 2px solid black;
+  /*border: 2px solid black;*/
   /*height: 50px;*/
   display: inline-block;
   position: relative;
@@ -214,7 +214,7 @@ body {
   max-width: 245px;
   height: 370px;
   flex: 5;
-  margin-bottom: -25%;
+  margin-bottom: 0%;
   background-image: url("../img/tree-trunk.svg");
   background-size: contain;
   background-repeat: no-repeat;
@@ -227,7 +227,7 @@ body {
   padding-left: 20%;
   padding-right: 20%;
   border-radius: 20px;
-  order: 2px solid yellow;
+  /*order: 2px solid yellow;*/
 
 }
 
