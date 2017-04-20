@@ -33,6 +33,7 @@ function Game(object) {
 
 
   this.audio = document.getElementById("circus-sound");
+  this.audio.playbackRate = 1;
   // $('#ding').load();
   // audioEl.addEventListener("canplaythrough", function () {
   //         setTimeout(function(){
@@ -60,6 +61,16 @@ Game.prototype.addToRows = function() {
   }
 };
 
+Game.prototype.musicPace = function () {
+  var noSignPad = this.monkey.padding;
+  if (noSignPad < 42.8) {
+    noSignPad = (42.8 - noSignPad) + 42.8;
+    this.audio.playbackRate = (noSignPad / 42.8);
+  } else {
+    this.audio.playbackRate = (noSignPad / 42.8);
+  }
+};
+
 Game.prototype.countDown = function() {
   if (this.gameEnd !== true) {
     var now = new Date().getTime();
@@ -68,6 +79,7 @@ Game.prototype.countDown = function() {
     this.monkey.changeFat('timer');
     this.secondsAlive = diff;
     this.endGame(this.monkey.padding);
+    this.musicPace();
     $('.current-timer-text').html(str + diff + " seconds");
   }
 };
