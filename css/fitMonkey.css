@@ -96,9 +96,9 @@ body {
   color: white;
   font-size: 200%;
   /*border: 2px solid green;*/
-  width: 85%;
+  width: 80%;
   height: 100%;
-  /*margin-top: 30%;*/
+  margin-top: 10%;
   text-align: center;
 }
 .main-box .left .current-timer {
@@ -119,7 +119,7 @@ body {
   /*border: 2px solid green;*/
   width: 85%;
   height: 30%;
-  margin-top: 30%;
+  margin-top: 40%;
   text-align: center;
 
 }
@@ -194,7 +194,7 @@ body {
 #status-bar #status-bar-text {
   font-size: 150%;
   font-weight: bold;
-  padding-top: 6%;
+  padding-top: 10%;
   height: 60%;
   width: 80%;
   margin: 0;

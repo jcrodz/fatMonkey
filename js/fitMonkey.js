@@ -21,7 +21,7 @@ var rightPad = parseInt($('#monkey').css('padding-right'));
       $('#monkey').css('padding-right', newRight);
       this.score += this.fruitScore;
       $('.score-text').html('Current Score: ' + this.score + " points");
-      $.playSound("../sounds/ding");
+      $.playSound("sounds/ding");
       break;
     case 'dessert':
       var newLeft2 = leftPad + (this.dessertPad) + 'px';
@@ -30,7 +30,7 @@ var rightPad = parseInt($('#monkey').css('padding-right'));
       $('#monkey').css('padding-right', newRight2);
       this.score += this.dessertScore;
       $('.score-text').html('Current Score: ' + this.score + " points");
-      $.playSound("../sounds/ding");
+      $.playSound("sounds/ding");
       break;
     case 'timer':
       var newLeft3 = leftPad + this.timerPad + 'px';
@@ -42,7 +42,7 @@ var rightPad = parseInt($('#monkey').css('padding-right'));
     case 'trash':
       this.score += this.trashScore;
       $('.score-text').html('Current Score: ' + this.score + " points.");
-      $.playSound("../sounds/wrong");
+      $.playSound("sounds/wrong");
       break;
     default:
 

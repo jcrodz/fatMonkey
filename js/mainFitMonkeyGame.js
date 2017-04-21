@@ -28,19 +28,8 @@ function Game(object) {
       );
   }
 
-
-
-
-
   this.audio = document.getElementById("circus-sound");
   this.audio.playbackRate = 1;
-  // $('#ding').load();
-  // audioEl.addEventListener("canplaythrough", function () {
-  //         setTimeout(function(){
-  //             audioEl.pause();
-  //         },
-  //         35000);
-  // }, false);
 }
 }
 
@@ -49,14 +38,14 @@ Game.prototype.addToRows = function() {
     for (i = 0; i < $('.shooting-row-img').length; i += 2) {
       var randomNum = Math.floor(Math.random() * this.items.length);
       var picChoose = $('.shooting-row-img');
-      var tempImage = '../img/' + this.items[randomNum].image;
+      var tempImage = 'img/' + this.items[randomNum].image;
       var tempType = this.items[randomNum].type;
       $(picChoose[i]).attr('src',tempImage);
       $(picChoose[i]).attr('type',tempType);
     }
     for (j = 1; j < $('.shooting-row-img').length; j += 2) {
       var picChoose2 = $('.shooting-row-img');
-      $(picChoose2[j]).attr('src', '../img/white.png');
+      $(picChoose2[j]).attr('src', 'img/white.png');
     }
   }
 };
@@ -87,7 +76,7 @@ Game.prototype.countDown = function() {
 Game.prototype.selectedImage = function () {
   var game = this;
   $('.shooting-row-img').on('click', function() {
-    $(this).attr('src', '../img/whitex.png');
+    $(this).attr('src', 'img/whitex.png');
     var tempType = $(this).attr('type');
     game.monkey.changeFat(tempType);
     game.endGame(game.monkey.padding);
@@ -134,4 +123,4 @@ $(document).ready(function() {
 
 });
 
-alert('Keep the monkey at a healty weight. Dont let him starve or get obese. Last as most as you can and try to feed him mostly with fruits. Enjoy!')
+alert('Keep the monkey at a healty weight. Dont let him starve or get obese. Last as most as you can and try to feed him mostly with fruits. Enjoy!');
