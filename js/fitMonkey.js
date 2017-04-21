@@ -5,7 +5,7 @@ function Monkey() {
   this.fruitScore = 2;
   this.dessertPad = (-3);
   this.dessertScore = (-1);
-  this.timerPad = 3;
+  this.timerPad = 4;
   this.trashScore = (-3);
   this.ding = $('#ding');
 }
